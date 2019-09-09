@@ -1,0 +1,22 @@
+{
+  "name": "vidly",
+  "version": "1.0.0",
+  "description": "movie management back end",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christiani-kunda/vidly.git"
+  },
+  "author": "Christian Iradukunda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christiani-kunda/vidly/issues"
+  },
+  "homepage": "https://github.com/christiani-kunda/vidly#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
