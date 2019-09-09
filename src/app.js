@@ -1,6 +1,8 @@
-const express = require('express');
 const Joi = require('joi');
+const express = require('express');
 const app = express();
+
+app.use(express.json());
 
 const movies = [{
         id: 1,
@@ -37,16 +39,42 @@ app.get('/api/movies', (req, res) => {
 /* The api that returns movie given an id */
 app.get('/api/movies/:id', (req, res) => {
     let movie = movies.find( aMovie => aMovie.id === parseInt(req.params.id));
-    if(!movie) return res.status(404).send(`The movie with id ${id} cannot be found!`);
+    if(!movie) return res.status(404).send(`The movie with id ${req.params.id} cannot be found!`);
     res.send(movie);
 });
 
 /* The api to create a new movie */
+app.post('/api/movies', (req, res) => {
+    const { error } = validateMovie(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    const movie = {
+        id: movies.length + 1,
+        name: req.body.name,
+        genre: req.body.genre
+    };
+    movies.push(movie);
+    res.send(movie);
+});
+
 /* The api to update a movie */
+app.put('/api/movies/:id', (req, res) => {
+    console.log(req.body);
+    let movie = movies.find( aMovie => aMovie.id === parseInt(req.params.id));
+    if(!movie) return res.status(404).send(`The movie with id ${req.params.id} cannot be found!`);
+
+   // let { error } = validateMovie(req.body);
+  //  if(error) return res.status(400).send(error.details[0].message);
+
+    movie.name = req.body.name;
+    movie.genre = req.body.genre;
+    res.send(movie);
+});
 /* The api to delete a movie */
 app.delete('/api/movies/:id', (req, res) => {
     let movie = movies.find( aMovie => aMovie.id === parseInt(req.params.id));
-    if(!movie) return res.status(404).send(`The movie with id ${id} cannot be found!`);
+    if(!movie) return res.status(404).send(`The movie with id ${req.params.id} cannot be found!`);
+    movies.splice(movies.indexOf(movie),1);
     res.send(movie);
 });
 
