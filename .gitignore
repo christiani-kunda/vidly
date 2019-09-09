@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# intellij modules
+.idea/
+.idea_modules/
+*.iml
