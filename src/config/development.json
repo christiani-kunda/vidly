@@ -1,6 +1,8 @@
 {
     "name" : "Vidly Application - Development",
     "mongodb" : {
-        "host":"localhost:vidly"
+        "host":"mongodb://localhost",
+        "port": "27017",
+        "name": "vidly"
     }
 }
