@@ -1,0 +1,6 @@
+{
+    "name" : "Vidly Application - Development",
+    "mongodb" : {
+        "host":"localhost:vidly"
+    }
+}
